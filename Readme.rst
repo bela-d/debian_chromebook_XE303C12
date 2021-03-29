@@ -91,7 +91,7 @@ To install on the local emmc drive, run as root (from the USB key):
 
 	./install.sh /dev/mmcblk0
 
-**This will wipe out the entire disk. You've been warned! ;-)**
+**This will wipe out the entire disk. You've been warned!**
 
 Once done, shutdown the machine with `poweroff`. Do not `reboot` or you will get a black screen (bug in the backpanel driver?).
 
