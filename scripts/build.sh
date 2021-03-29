@@ -12,7 +12,7 @@ kernel_option="debian_4.19"
 
 if [ "$kernel_option" == "debian_4.19" ]; then
 	release="buster"
-	build_armsoc_xorg=true
+	build_armsoc_xorg=false
 	tar xJf /usr/src/linux-source-4.19.tar.xz
 	cd linux-source-4.19
 
