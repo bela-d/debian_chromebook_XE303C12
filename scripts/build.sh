@@ -92,7 +92,7 @@ wget https://github.com/beagleboard/linux/blob/4.19/firmware/am335x-pm-firmware.
 wget https://github.com/beagleboard/linux/blob/4.19/firmware/am43x-evm-scale-data.bin?raw=true -O firmware/am43x-evm-scale-data.bin
 
 # Copy config, apply and build kernel
-cp /configs/linux_config-4.19 ./.config
+cp /configs/linux_config-5.11.0-1 ./.config
 make olddefconfig
 make bindeb-pkg
 make -j
