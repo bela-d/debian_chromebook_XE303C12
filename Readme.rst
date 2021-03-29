@@ -5,15 +5,11 @@ Installing Debian on an ARM Chromebook (XE303C12)
 :date: 2018-02-25 14:00
 :modified: 2020-07-27 14:00
 :tags: debian, arm, chromebook
-:authors: Pascal Geiser
+:author: Béla Dang
 :summary: Debian installation on Samsung's ARM chromebook.
+:forked from: https://github.com/13pgeiser/debian_chromebook_XE303C12
 
 .. contents::
-
-|ci-badge|
-
-.. |ci-badge| image:: https://dev.azure.com/pascalgeiser/debian_chromebook_XE303C12/_apis/build/status/13pgeiser.debian_chromebook_XE303C12?branchName=master
-              :target: https://dev.azure.com/pascalgeiser/debian_chromebook_XE303C12/_build/latest?definitionId=8&branchName=master
 
 Work heavily based on Kali ARM scripts: https://gitlab.com/kalilinux/build-scripts/kali-arm
 
@@ -72,7 +68,7 @@ For more, look here:
 USB stick preparation
 *********************
 
-- Download the latest zip archive from the [releases page](https://github.com/13pgeiser/debian_chromebook_XE303C12/releases) and unpack it.
+- Download the latest zip archive from the [releases page](https://github.com/bela-d/debian_chromebook_XE303C12/releases) and unpack it.
 - Open a terminal in the extracted folder
 - plug a USB key to hold the debian installation image
 - run *./install.sh* and select the USB key in the list.
@@ -147,11 +143,9 @@ Rebuilding locally
 
 The scripts have been prepared to work in docker. To rebuild:
  * Install docker for your distro
- * Clone the repository: *git clone https://github.com/13pgeiser/debian_chromebook_XE303C12.git*
+ * Clone the repository: *git clone https://github.com/bela-d/debian_chromebook_XE303C12.git*
  * Jump in the folder: *cd debian_chromebook_XE303C12*
  * Call the docker build script: *./scripts/docker_build.sh* and wait a while depending on your machine...
-
-To rebuild with Debian bullseye: edit *./scripts/build.sh* and select a kernel option based on 5.4.
 
 Have fun!
 
