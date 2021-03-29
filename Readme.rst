@@ -133,7 +133,8 @@ The final result is usable but far from production quality.
 2. Sound card is not configured (and may not work).
 3. There is no graphic acceleration.
 4. Change the password!!! ;-)
-5. Plenty of other problems not described here.
+5. If the battery of your Chromebook discharged completely, you may loose your developer mode and thus, you are unable to boot from USB or SD card. Basically, using ctrl-U will fail and you will hear 2 beeps. To fix this, please follow this guide: https://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode 
+6. Plenty of other problems not described here.
 
 Rebuilding locally
 ******************
