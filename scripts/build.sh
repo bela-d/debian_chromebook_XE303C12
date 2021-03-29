@@ -113,7 +113,7 @@ cat <<__EOF__ >kernel-exynos.its
     images {
         kernel@1 {
             description = "kernel";
-            data = /incbin/("/incbin/zImage");
+            data = /incbin/("zImage");
             type = "kernel_noload";
             arch = "arm";
             os = "linux";
