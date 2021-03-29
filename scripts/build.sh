@@ -109,20 +109,21 @@ cat <<__EOF__ >kernel-exynos.its
 
 / {
     description = "Chrome OS kernel image with one or more FDT blobs";
+    #address-cells = <1>;
     images {
-        kernel@1{
+        kernel@1 {
             description = "kernel";
-            data = /incbin/("zImage");
+            data = /incbin/("arch/arm/boot/zImage");
             type = "kernel_noload";
             arch = "arm";
             os = "linux";
             compression = "none";
             load = <0>;
             entry = <0>;
-          };
+        };
         fdt@1 {
             description = "exynos5250-snow.dtb";
-            data = /incbin/("dts/exynos5250-snow.dtb");
+            data = /incbin/("arch/arm/boot/dts/exynos5250-snow.dtb");
             type = "flat_dt";
             arch = "arm";
             compression = "none";
@@ -132,7 +133,7 @@ cat <<__EOF__ >kernel-exynos.its
         };
         fdt@2 {
             description = "exynos5250-snow-rev5.dtb";
-            data = /incbin/("dts/exynos5250-snow-rev5.dtb");
+            data = /incbin/("arch/arm/boot/dts/exynos5250-snow-rev5.dtb");
             type = "flat_dt";
             arch = "arm";
             compression = "none";
@@ -140,33 +141,19 @@ cat <<__EOF__ >kernel-exynos.its
                 algo = "sha1";
             };
         };
-        fdt@3 {
-            description = "exynos5250-spring.dtb";
-            data = /incbin/("dts/exynos5250-spring.dtb");
-            type = "flat_dt";
-            arch = "arm";
-            compression = "none";
-            hash@1 {
-                algo = "sha1";
-            };
-        };
-      };
+    };
     configurations {
         default = "conf@1";
-        conf@1{
+        conf@1 {
             kernel = "kernel@1";
             fdt = "fdt@1";
-          };
-        conf@2{
+        };
+        conf@2 {
             kernel = "kernel@1";
             fdt = "fdt@2";
-          };
-        conf@3 {
-            kernel = "kernel@1";
-            fdt = "fdt@3";
-          };
-      };
-  };
+        };
+    };
+};
 __EOF__
 mkimage -D "-I dts -O dtb -p 2048" -f kernel-exynos.its exynos-kernel
 dd if=/dev/zero of=bootloader.bin bs=512 count=1
