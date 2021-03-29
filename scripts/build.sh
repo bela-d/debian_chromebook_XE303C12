@@ -113,7 +113,7 @@ cat <<__EOF__ >kernel-exynos.its
     images {
         kernel@1 {
             description = "kernel";
-            data = /incbin/("arch/arm/boot/zImage");
+            data = /incbin/("/incbin/zImage");
             type = "kernel_noload";
             arch = "arm";
             os = "linux";
@@ -123,7 +123,7 @@ cat <<__EOF__ >kernel-exynos.its
         };
         fdt@1 {
             description = "exynos5250-snow.dtb";
-            data = /incbin/("arch/arm/boot/dts/exynos5250-snow.dtb");
+            data = /incbin/("dts/exynos5250-snow.dtb");
             type = "flat_dt";
             arch = "arm";
             compression = "none";
@@ -133,7 +133,7 @@ cat <<__EOF__ >kernel-exynos.its
         };
         fdt@2 {
             description = "exynos5250-snow-rev5.dtb";
-            data = /incbin/("arch/arm/boot/dts/exynos5250-snow-rev5.dtb");
+            data = /incbin/("dts/exynos5250-snow-rev5.dtb");
             type = "flat_dt";
             arch = "arm";
             compression = "none";
