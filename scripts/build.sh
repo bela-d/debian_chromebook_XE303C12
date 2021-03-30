@@ -83,14 +83,6 @@ export CROSS_COMPILE=arm-linux-gnueabihf-
 MAKEFLAGS="-j$(grep -c processor /proc/cpuinfo)"
 export MAKEFLAGS
 
-# Get TI firmwares (not mandatory)...
-mkdir -p firmware
-wget https://github.com/beagleboard/linux/blob/4.19/firmware/am335x-bone-scale-data.bin?raw=true -O firmware/am335x-bone-scale-data.bin
-wget https://github.com/beagleboard/linux/blob/4.19/firmware/am335x-evm-scale-data.bin?raw=true -O firmware/am335x-evm-scale-data.bin
-wget https://github.com/beagleboard/linux/blob/4.19/firmware/am335x-pm-firmware.bin?raw=true -O firmware/am335x-pm-firmware.bin
-wget https://github.com/beagleboard/linux/blob/4.19/firmware/am335x-pm-firmware.elf?raw=true -O firmware/am335x-pm-firmware.elf
-wget https://github.com/beagleboard/linux/blob/4.19/firmware/am43x-evm-scale-data.bin?raw=true -O firmware/am43x-evm-scale-data.bin
-
 # Copy config, apply and build kernel
 cp /configs/linux_config ./.config
 make olddefconfig
