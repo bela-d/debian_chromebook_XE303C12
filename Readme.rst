@@ -65,7 +65,7 @@ For more, look here:
 USB stick preparation
 *********************
 
-- Download the latest zip archive from the [releases page](https://github.com/bela-d/debian_chromebook_XE303C12/releases) and unpack it.
+- Download the latest zip archive from the releases page (https://github.com/bela-d/debian_chromebook_XE303C12/releases) and unpack it.
 - Open a terminal in the extracted folder
 - plug a USB key to hold the debian installation image
 - run *./install.sh* and select the USB key in the list.
