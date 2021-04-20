@@ -34,7 +34,7 @@ jobs:
         with:
           scandir: './scripts'
         env: 
-          SHELLCHECK_OPTS: '-s sh'
+          SHELLCHECK_OPTS: '-s bash'
         
       - name: 'Build'
         run: scripts/docker_build.sh
