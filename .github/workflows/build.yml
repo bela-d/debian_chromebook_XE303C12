@@ -26,10 +26,10 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: 'Run check'
+      - name: 'Run shfmt check'
         run: make check
         
-      - name: 'Run ShellCheck'
+      - name: 'Run shellcheck'
         uses: ludeeus/action-shellcheck@master
         with:
           scandir: './scripts'
