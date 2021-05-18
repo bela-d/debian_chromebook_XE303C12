@@ -80,7 +80,7 @@ figlet "KERNEL: $kernel_version"
 
 export ARCH=arm
 export CROSS_COMPILE=arm-linux-gnueabihf-
-MAKEFLAGS="-j$(grep -c processor /proc/cpuinfo)"
+MAKEFLAGS="-j$(nproc)"
 export MAKEFLAGS
 
 # Copy config, apply and build kernel
