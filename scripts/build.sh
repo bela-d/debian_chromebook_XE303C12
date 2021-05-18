@@ -2,7 +2,7 @@
 # This script must run in a container with priviledges! (chroot, bin_fmt)
 set -e
 
-figlet "CPUs: $(grep -c processor /proc/cpuinfo)"
+figlet "CPUs: $(nproc)"
 
 #
 kernel_option="debian_4.19"
