@@ -4,6 +4,8 @@ FROM debian:buster
 MAINTAINER Béla Dang
 
 RUN echo 'deb-src http://deb.debian.org/debian buster main' >> /etc/apt/sources.list
+RUN echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
+RUN echo 'deb-src http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 
 # Install base deps
 RUN set -ex \
@@ -43,6 +45,8 @@ RUN set -ex \
     && apt-get update \
     && apt-get install -y gcc-multilib \
     && apt-get install -y linux-source-4.19 \
+    && apt-get -t buster-backports build-dep -y linux-source-5.10 \
+    && apt-get -t buster-backports install -y linux-source-5.10 \
     && apt-get clean \
     && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
