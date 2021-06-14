@@ -10,7 +10,7 @@ format:
 	docker run --rm -v "$(shell pwd)/scripts":/mnt mvdan/shfmt -w /mnt/docker_build.sh
 	docker run --rm -v "$(shell pwd)/scripts":/mnt mvdan/shfmt -w /mnt/install.sh
 
-run:
-	bash ./bash_helpers.sh || true
+build:
+	bash ./scripts/docker_build.sh || true
 
-.PHONY: check format run
+.PHONY: check format build
