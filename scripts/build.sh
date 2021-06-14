@@ -5,69 +5,21 @@ set -e
 figlet "CPUs: $(nproc)"
 
 #
-kernel_option="debian_4.19"
-#kernel_option="debian_5.4"
-#kernel_option="rcn_5.4"
-#kernel_option="rcn_4.19"
+kernel_option="4.19"
+#kernel_option="5.10"
 
-if [ "$kernel_option" == "debian_4.19" ]; then
+if [ "$kernel_option" == "4.19" ]; then
 	release="buster"
 	build_armsoc_xorg=false
-	tar xJf /usr/src/linux-source-4.19.tar.xz
-	cd linux-source-4.19
+	tar xJf /usr/src/linux-source-${kernel_option}.tar.xz
+	cd linux-source-${kernel_option}
 
-elif [ "$kernel_option" == "debian_5.4" ]; then
+elif [ "$kernel_option" == "5.10" ]; then
 	release="bullseye"
 	build_armsoc_xorg=false
-	tar xJf /usr/src/linux-source-5.4.tar.xz
-	cd linux-source-5.4
-	export kernel_version=5.4.19
-
-elif [ "$kernel_option" == "rcn_4.19" ]; then
-	release="buster"
-	build_armsoc_xorg=true
-	kernel_version=4.19.127
-	rcn_patch=https://rcn-ee.com/deb/sid-armhf/v4.19.127-bone53/patch-4.19.127-bone53.diff.gz
-	patches="0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
-	for patch_to_apply in $patches; do
-		wget https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-armv7/$patch_to_apply
-	done
-	wget -nv $rcn_patch
-	rcn_patch=$(basename $rcn_patch)
-	gzip -d "$rcn_patch"
-	wget -nv https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-$kernel_version.tar.xz
-	tar xJf linux-$kernel_version.tar.xz
-	(
-		cd linux-$kernel_version || exit
-		git apply "../${rcn_patch%.*}"
-		for patch_to_apply in $patches; do
-			patch -p1 --no-backup-if-mismatch <../$patch_to_apply
-		done
-	)
-	cd linux-$kernel_version
-
-elif [ "$kernel_option" == "rcn_5.4" ]; then
-	release="bullseye"
-	build_armsoc_xorg=false
-	kernel_version=5.4.52
-	rcn_patch=https://rcn-ee.com/deb/sid-armhf/v5.4.52-armv7-x31/patch-5.4.52-armv7-x31.diff.gz
-	patches="0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
-	for patch_to_apply in $patches; do
-		wget https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/core/linux-armv7/$patch_to_apply
-	done
-	wget -nv $rcn_patch
-	rcn_patch=$(basename $rcn_patch)
-	gzip -d "$rcn_patch"
-	wget -nv https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$kernel_version.tar.xz
-	tar xJf linux-$kernel_version.tar.xz
-	(
-		cd linux-$kernel_version || exit
-		git apply "../${rcn_patch%.*}"
-		for patch_to_apply in $patches; do
-			patch -p1 --no-backup-if-mismatch <../$patch_to_apply
-		done
-	)
-	cd linux-$kernel_version
+	tar xJf /usr/src/linux-source-${kernel_option}.tar.xz
+	cd linux-source-${kernel_option}
+	export kernel_version=$kernel_option
 
 else
 	echo "Unsupported kernel_option: $kernel_option"
@@ -84,7 +36,7 @@ MAKEFLAGS="-j$(nproc)"
 export MAKEFLAGS
 
 # Copy config, apply and build kernel
-cp /configs/linux_config ./.config
+cp /configs/${kernel_option} ./.config
 make olddefconfig
 make bindeb-pkg
 make -j
