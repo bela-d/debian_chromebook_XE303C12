@@ -5,8 +5,8 @@ set -e
 figlet "CPUs: $(nproc)"
 
 #
-kernel_option="4.19"
-#kernel_option="5.10"
+#kernel_option="4.19"
+kernel_option="5.10"
 
 if [ "$kernel_option" == "4.19" ]; then
 	release="buster"
