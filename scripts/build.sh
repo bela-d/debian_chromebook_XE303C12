@@ -32,8 +32,7 @@ figlet "KERNEL: $kernel_version"
 
 export ARCH=arm
 export CROSS_COMPILE=arm-linux-gnueabihf-
-#MAKEFLAGS="-j$(nproc)"
-MAKEFLAGS="-j1"
+MAKEFLAGS="-j$(nproc)"
 export MAKEFLAGS
 
 # Copy config, apply and build kernel
