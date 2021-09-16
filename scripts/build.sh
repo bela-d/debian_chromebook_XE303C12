@@ -121,9 +121,9 @@ qemu-debootstrap --arch=armhf $release debian_root http://httpredir.debian.org/d
 if [ "$release" == "buster" ]; then
 	# Update Apt sources for buster
 	cat <<EOF >debian_root/etc/apt/sources.list
-deb http://httpredir.debian.org/debian buster main non-free contrib
-deb-src http://httpredir.debian.org/debian buster main non-free contrib
-deb http://security.debian.org/debian-security buster/updates main contrib non-free
+deb http://httpredir.debian.org/debian buster main contrib non-free
+deb-src http://httpredir.debian.org/debian buster main contrib non-free
+deb http://security.debian.org/debian-security ${release}/updates main contrib non-free
 EOF
 else
 	# Update Apt sources for bullseye
@@ -200,7 +200,7 @@ apt-get -y --no-install-recommends install abootimg cgpt fake-hwclock u-boot-too
   initramfs-tools parted sudo xz-utils wpasupplicant firmware-linux firmware-libertas \
   firmware-samsung locales-all ca-certificates initramfs-tools u-boot-tools locales \
   console-common less network-manager git laptop-mode-tools python3 task-ssh-server \
-  alsa-utils pulseaudio
+  alsa-utils pulseaudio apt-utils
 apt-get -y dist-upgrade
 apt-get -y autoremove
 apt-get clean
