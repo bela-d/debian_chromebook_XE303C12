@@ -130,7 +130,7 @@ else
 	cat <<EOF >debian_root/etc/apt/sources.list
 deb http://httpredir.debian.org/debian $release main contrib non-free
 deb-src http://httpredir.debian.org/debian $release main contrib non-free
-deb http://security.debian.org/debian-security ${release}/updates main contrib non-free
+deb http://security.debian.org/debian-security ${release}-security main contrib non-free
 EOF
 fi
 
