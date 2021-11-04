@@ -1,7 +1,7 @@
 # vim:set ft=dockerfile:
 # Debian base.
 FROM debian:buster
-MAINTAINER Béla Dang
+LABEL maintainer="Béla Dang"
 
 RUN echo 'deb-src http://deb.debian.org/debian buster main' >> /etc/apt/sources.list
 RUN echo 'deb http://deb.debian.org/debian buster-backports main' >> /etc/apt/sources.list
